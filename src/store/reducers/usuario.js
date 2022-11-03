@@ -1,8 +1,8 @@
-import {USER_LOGIN} from '../action/actionTypes';
+import {USER_LOGIN} from '../actions/actionTypes';
 
 const initialState = {
   id_usuario: null,
-  nome_usuario: null,
+  usuario_login: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -11,7 +11,7 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         id_usuario: action.payload.id_usuario,
-        nome_usuario: action.payload.nome_usuario,
+        usuario_login: action.payload.usuario_login,
       };
     default: {
       return state;

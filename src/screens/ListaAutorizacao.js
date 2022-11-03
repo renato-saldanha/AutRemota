@@ -8,7 +8,9 @@ import {
 } from 'react-native';
 import axios from 'axios';
 import {server, mostrarErro, sucesso} from '../common';
-import ItemAutorizacao from './ItemAutorizacao';
+import {userSelector} from 'react-redux';
+
+import ItemAutorizacao from '../componentes/ItemAutorizacao';
 
 const estadoInicial = {
   autorizacoes: [],
@@ -22,7 +24,7 @@ export default class ListaAutorizacao extends Component {
   }
 
   getAutorizacoes = async () => {
-    const usuGerenteSupervisor = 2;
+    const usuGerenteSupervisor = userSelector(state => state.id_usuario);
     await axios
       .get(`${server}/autorizacao/${usuGerenteSupervisor}`)
       .then(aut => this.setState({autorizacoes: aut.data}))
